@@ -65,13 +65,29 @@ export function analyzeProfileShape(scores: DimensionScore[]): {
   let shape: ProfileShape
   let interpretation: string
 
+  const level = classifyInnovationLevel(mean)
+
   if (sd < 0.8) {
     shape = 'balanced'
-    interpretation =
-      'Het innovatieprofiel is relatief rond, wat wijst op een evenwichtige, ' +
-      'holistische benadering van innovatie over alle dimensies. Het bedrijf ' +
-      'behandelt innovatie als een samenhangend geheel in plaats van zich te ' +
-      'richten op geïsoleerde gebieden.'
+    if (level === 'systemic') {
+      interpretation =
+        'Het innovatieprofiel is relatief rond en op hoog niveau, wat wijst op een ' +
+        'evenwichtige, holistische benadering van innovatie over alle dimensies. ' +
+        'Het bedrijf behandelt innovatie als een samenhangend geheel — een kenmerk ' +
+        'van wereldklasse-innovators.'
+    } else if (level === 'occasional') {
+      interpretation =
+        'Het innovatieprofiel is relatief rond, maar op een gemiddeld niveau. ' +
+        'De organisatie scoort consistent, maar nog niet hoog genoeg voor ' +
+        'systematische innovatie. Er liggen kansen om over de hele linie naar ' +
+        'een hoger niveau te groeien.'
+    } else {
+      interpretation =
+        'Het innovatieprofiel is weliswaar rond, maar op een laag niveau. ' +
+        'De organisatie scoort consistent laag over vrijwel alle dimensies, ' +
+        'wat wijst op een breed gebrek aan innovatie-activiteit. ' +
+        'Een structurele aanpak is nodig om de innovatiekracht op te bouwen.'
+    }
   } else if (sd >= 1.3) {
     shape = 'focused'
     interpretation =
@@ -83,11 +99,18 @@ export function analyzeProfileShape(scores: DimensionScore[]): {
       '"Blue Ocean" kansen vertegenwoordigen.'
   } else {
     shape = 'mixed'
-    interpretation =
-      'Het innovatieprofiel toont matige variatie over de dimensies, wat ' +
-      'wijst op sterke gebieden naast ontwikkelpunten. Dit is gebruikelijk ' +
-      'voor bedrijven die zijn begonnen met innoveren maar nog geen volledig ' +
-      'systematische aanpak hebben geadopteerd.'
+    if (level === 'little') {
+      interpretation =
+        'Het innovatieprofiel toont enige variatie over de dimensies, maar ' +
+        'het algehele niveau is laag. Er zijn enkele lichtpunten, maar de ' +
+        'meeste dimensies vragen om substantiële verbetering.'
+    } else {
+      interpretation =
+        'Het innovatieprofiel toont matige variatie over de dimensies, wat ' +
+        'wijst op sterke gebieden naast ontwikkelpunten. Dit is gebruikelijk ' +
+        'voor bedrijven die zijn begonnen met innoveren maar nog geen volledig ' +
+        'systematische aanpak hebben geadopteerd.'
+    }
   }
 
   return { shape, standardDeviation: sd, interpretation }
