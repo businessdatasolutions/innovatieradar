@@ -1,73 +1,27 @@
-# React + TypeScript + Vite
+# Innovatieradar
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Een interactieve webapplicatie voor het beoordelen en visualiseren van het innovatievermogen van een organisatie over 12 dimensies, gebaseerd op het wetenschappelijke Innovation Radar framework.
 
-Currently, two official plugins are available:
+## Doel
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+De Innovatieradar helpt organisaties, studenten en consultants om een gestructureerde assessment uit te voeren van de innovatiekracht van een organisatie. Door 12 innovatiedimensies te scoren, worden sterke punten, verbeterpunten en strategische kansen zichtbaar gemaakt.
 
-## React Compiler
+## Functies
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Nieuwe Assessment Starten**: Doorloop een gestructureerde vragenlijst over 12 innovatiedimensies en score de organisatie per dimensie.
+- **Radardiagram Visualisatie**: De resultaten worden weergegeven in een interactief spinnenwebdiagram (radardiagram) dat de innovatiepositie direct inzichtelijk maakt.
+- **Geschiedenis**: Eerdere assessments zijn terug te vinden en te vergelijken, zodat voortgang over tijd zichtbaar wordt.
+- **Concrete Aanbevelingen**: Op basis van de scores worden gerichte aanbevelingen gegenereerd voor verbetering.
+- **Gebaseerd op wetenschappelijk framework**: Het Innovation Radar van Sawhney, Wolcott & Arroniz (MIT Sloan Management Review, 2006) vormt de basis van de methodiek.
 
-## Expanding the ESLint configuration
+## De 12 Innovatiedimensies
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Het framework beoordeelt innovatie langs dimensies zoals: Aanbod, Platform, Oplossingen, Klanten, Klantervaringen, Waardecaptatie, Processen, Organisatie, Supply Chain, Aanwezigheid, Netwerk en Merk.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Technologie
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+De applicatie is gebouwd met React, TypeScript en Vite, en is gehost op GitHub Pages.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Live Demo
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Bekijk de applicatie op: [businessdatasolutions.github.io/innovatieradar](https://businessdatasolutions.github.io/innovatieradar/)
